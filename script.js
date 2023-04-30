@@ -26,22 +26,26 @@ for (let i = 0; i < blackBtn.length; i++){
     blackBtn[i].addEventListener('mousedown', () => {
         blackBtn[i].style.background = '#6F7378';
         let num = blackBtn[i].textContent;
-        if (nextOp){
-            answer.innerHTML = num;
-            nextOp = false;
-        } else{
-            if (answer.textContent.length < 6){
-                if (answer.textContent == 0 && i != 10 && !point){
-                    answer.innerHTML = num;
-                } else{
-                    if (i != 10){
-                        answer.innerHTML = answer.textContent + num;
-                    } else if (!point){
-                        answer.innerHTML = answer.textContent + num;
-                        point = true;
+        if (answer.textContent != 'Error'){
+            if (nextOp){
+                answer.innerHTML = num;
+                nextOp = false;
+            } else{
+                if (answer.textContent.length < 6){
+                    if (answer.textContent == 0 && i != 10 && !point){
+                        answer.innerHTML = num;
+                    } else{
+                        if (i != 10){
+                            answer.innerHTML = answer.textContent + num;
+                        } else if (!point){
+                            answer.innerHTML = answer.textContent + num;
+                            point = true;
+                        }
                     }
                 }
             }
+        } else{
+            ifError(num);
         }
     });
     blackBtn[i].addEventListener('mouseup', () => {
@@ -91,6 +95,7 @@ greyBtn[2].addEventListener('click', () =>{
     operator = 4;
     pos = true;
     point = false;
+    ifError(0);
 });
 
 
@@ -103,6 +108,7 @@ for (let i = 0; i < 4; i++){
         nextOp = true;
         pos = true;
         point = false;
+        ifError(0);
     });
 }
 
@@ -115,20 +121,41 @@ orangeBtn[4].addEventListener('click', () => {
         second = answer.textContent;  
         switch(operator){
             case 0:
-                answer.innerHTML = parseFloat(first) / parseFloat(second);
+                if (second != 0){
+                    answer.innerHTML = parseFloat(first) / parseFloat(second);
+                } else{
+                    answer.innerHTML = 'Error'; 
+                }
+                pos = false;
                 break;
             case 1:
                 answer.innerHTML = parseFloat(first) * parseFloat(second);
+                pos = false;
                 break;
             case 2:
                 answer.innerHTML = parseFloat(first) - parseFloat(second);
+                pos = false;
                 break;
             case 3:
                 answer.innerHTML = parseFloat(first) + parseFloat(second);
+                pos = false;
                 break;
             case 4:
                 answer.innerHTML = parseFloat(first) % parseFloat(second);
+                pos = false;
                 break;
         }
     }
 });
+
+
+//если вдруг всплыл error
+function ifError(num){
+    if (answer.textContent == 'Error'){
+        answer.innerHTML = num;
+        result = false;
+        point = false;
+        nextOp = false;
+        pos = false;
+    }
+}
