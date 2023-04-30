@@ -1,0 +1,76 @@
+body{
+    width:device-width;
+    height:1000px;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url("fonts/Montserrat-VariableFont_wght.ttf") format("woff2"); }
+
+.calc{
+    width:382px;
+    height:590px;
+    position:absolute;
+    margin-top: 100px;
+    margin-left:570px;
+    border: 5px solid black;
+    border-radius:20px;
+    display:flex;
+    flex-direction: column;
+    background-color: #000000;
+}
+
+.res{
+    height:120px;
+    width:100%;
+}
+.res p{
+    margin-top:45px;
+    font-size:80px;
+    color:#FFFFFF;
+    text-align:right;
+    margin-right: 28px;
+    font-family: 'Montserrat';  
+}
+
+.firstPart{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction:row;
+    margin-top:20px;
+}
+
+.firstPart button{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    border:none;
+    margin: 8px 12px;
+    font-family: 'Montserrat';
+    font-size: 30px;
+    cursor:pointer; 
+}
+
+.grey{
+    background-color:#A4A4A4;
+    color:#000000;
+}
+
+.orange{
+    background-color:#F1A53D;
+    color: #FDFDFB;
+    font-size: 25px;
+}
+
+.black{
+    background-color:#323232;
+    color:#FFFFFF;
+}
+
+#zero{
+    border-radius: 60px; 
+    width:165px;
+}
+#mult{
+    font-size:23px;
+}
